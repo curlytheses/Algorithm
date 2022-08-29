@@ -60,7 +60,7 @@ int main()
     struct Graph *graph = createAGraph(n);
     for (i = 0; i < n; i++)
     {
-        printf("Enter the connected vertises of Edge[%d]:",i+1);
+        printf("Enter the connected vertises of Edge[%d]:", i + 1);
         scanf("%d%d", &a, &b);
         addEdge(graph, a, b);
     }
