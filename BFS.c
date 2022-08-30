@@ -149,7 +149,7 @@ int main()
     scanf("%d", &n);
     struct Graph *graph = createGraph(n);
     printf("Enter the vertises of Graph :\n");
-    for (i = 0; i < n + 1; i++)
+    for (i = 0; i < n; i++)
     {
         printf("Enter the source and destination of edge %d :", i + 1);
         scanf("%d%d", &src, &dest);
