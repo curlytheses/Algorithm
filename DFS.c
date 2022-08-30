@@ -1,33 +1,26 @@
 #include <stdio.h>
 #include <stdlib.h>
-
 struct node
 {
     int vertex;
     struct node *next;
 };
-
 struct node *createNode(int v);
-
 struct Graph
 {
     int numVertices;
     int *visited;
     struct node **adjLists;
 };
-
 void DFS(struct Graph *graph, int vertex)
 {
     struct node *adjList = graph->adjLists[vertex];
     struct node *temp = adjList;
-
     graph->visited[vertex] = 1;
     printf("Visited %d \n", vertex);
-
     while (temp != NULL)
     {
         int connectedVertex = temp->vertex;
-
         if (graph->visited[connectedVertex] == 0)
         {
             DFS(graph, connectedVertex);
@@ -35,7 +28,6 @@ void DFS(struct Graph *graph, int vertex)
         temp = temp->next;
     }
 }
-
 struct node *createNode(int v)
 {
     struct node *newNode = malloc(sizeof(struct node));
@@ -43,16 +35,12 @@ struct node *createNode(int v)
     newNode->next = NULL;
     return newNode;
 }
-
 struct Graph *createGraph(int vertices)
 {
     struct Graph *graph = malloc(sizeof(struct Graph));
     graph->numVertices = vertices;
-
     graph->adjLists = malloc(vertices * sizeof(struct node *));
-
     graph->visited = malloc(vertices * sizeof(int));
-
     int i;
     for (i = 0; i < vertices; i++)
     {
@@ -61,7 +49,6 @@ struct Graph *createGraph(int vertices)
     }
     return graph;
 }
-
 void addEdge(struct Graph *graph, int src, int dest)
 {
     struct node *newNode = createNode(dest);
@@ -71,7 +58,6 @@ void addEdge(struct Graph *graph, int src, int dest)
     newNode->next = graph->adjLists[dest];
     graph->adjLists[dest] = newNode;
 }
-
 void printGraph(struct Graph *graph)
 {
     int v;
@@ -87,7 +73,6 @@ void printGraph(struct Graph *graph)
         printf("\n");
     }
 }
-
 int main()
 {
     int n, i, src, dest;
