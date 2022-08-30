@@ -1,51 +1,41 @@
 #include <stdio.h>
 #include <stdlib.h>
 #define SIZE 40
-
 struct queue
 {
     int items[SIZE];
     int front;
     int rear;
 };
-
 struct queue *createQueue();
 void enqueue(struct queue *q, int);
 int dequeue(struct queue *q);
 void display(struct queue *q);
 int isEmpty(struct queue *q);
 void printQueue(struct queue *q);
-
 struct node
 {
     int vertex;
     struct node *next;
 };
-
 struct node *createNode(int);
-
 struct Graph
 {
     int numVertices;
     struct node **adjLists;
     int *visited;
 };
-
 void bfs(struct Graph *graph, int startVertex)
 {
     struct queue *q = createQueue();
-
     graph->visited[startVertex] = 1;
     enqueue(q, startVertex);
-
     while (!isEmpty(q))
     {
         printQueue(q);
         int currentVertex = dequeue(q);
         printf("Visited %d\n", currentVertex);
-
         struct node *temp = graph->adjLists[currentVertex];
-
         while (temp)
         {
             int adjVertex = temp->vertex;
@@ -59,7 +49,6 @@ void bfs(struct Graph *graph, int startVertex)
         }
     }
 }
-
 struct node *createNode(int v)
 {
     struct node *newNode = malloc(sizeof(struct node));
@@ -67,38 +56,30 @@ struct node *createNode(int v)
     newNode->next = NULL;
     return newNode;
 }
-
 struct Graph *createGraph(int vertices)
 {
     struct Graph *graph = malloc(sizeof(struct Graph));
     graph->numVertices = vertices;
-
     graph->adjLists = malloc(vertices * sizeof(struct node *));
     graph->visited = malloc(vertices * sizeof(int));
-
     int i;
     for (i = 0; i < vertices; i++)
     {
         graph->adjLists[i] = NULL;
         graph->visited[i] = 0;
     }
-
     return graph;
 }
-
 void addEdge(struct Graph *graph, int src, int dest)
 {
 
     struct node *newNode = createNode(dest);
     newNode->next = graph->adjLists[src];
     graph->adjLists[src] = newNode;
-
-
     newNode = createNode(src);
     newNode->next = graph->adjLists[dest];
     graph->adjLists[dest] = newNode;
 }
-
 struct queue *createQueue()
 {
     struct queue *q = malloc(sizeof(struct queue));
@@ -106,7 +87,6 @@ struct queue *createQueue()
     q->rear = -1;
     return q;
 }
-
 int isEmpty(struct queue *q)
 {
     if (q->rear == -1)
@@ -114,7 +94,6 @@ int isEmpty(struct queue *q)
     else
         return 0;
 }
-
 void enqueue(struct queue *q, int value)
 {
     if (q->rear == SIZE - 1)
@@ -127,7 +106,6 @@ void enqueue(struct queue *q, int value)
         q->items[q->rear] = value;
     }
 }
-
 int dequeue(struct queue *q)
 {
     int item;
@@ -148,11 +126,9 @@ int dequeue(struct queue *q)
     }
     return item;
 }
-
 void printQueue(struct queue *q)
 {
     int i = q->front;
-
     if (isEmpty(q))
     {
         printf("Queue is empty");
@@ -166,20 +142,19 @@ void printQueue(struct queue *q)
         }
     }
 }
-
 int main()
 {
     int n, i, src, dest, q;
     printf("Enter the number of edges in Graph: ");
-    scanf("%d",&n);
+    scanf("%d", &n);
     struct Graph *graph = createGraph(n);
     printf("Enter the vertises of Graph :\n");
-    for (i = 0; i < n+1; i++)
+    for (i = 0; i < n + 1; i++)
     {
-        printf("Enter the source and destination of edge %d :",i+1);
-        scanf("%d%d",&src,&dest); 
-        addEdge(graph, src, dest); 
-    } 
+        printf("Enter the source and destination of edge %d :", i + 1);
+        scanf("%d%d", &src, &dest);
+        addEdge(graph, src, dest);
+    }
     bfs(graph, 0);
     return 0;
 }
