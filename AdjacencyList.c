@@ -55,7 +55,7 @@ void printGraph(struct Graph *graph)
 int main()
 {
     int n, i, a, b;
-    printf("Enter the number of N:");
+    printf("Enter the number of Edges:");
     scanf("%d", &n);
     struct Graph *graph = createAGraph(n);
     for (i = 0; i < n; i++)
