@@ -53,6 +53,7 @@ void printGraph(struct Graph *graph)
     }
 }
 int main()
+
 {
     int n, i, a, b;
     printf("Enter the number of Edges:");
