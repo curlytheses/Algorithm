@@ -61,7 +61,7 @@ int MatrixChainOrder(int p[], int i, int j)
 void main()
 {
     int k;
-    printf("Enter the no. of Matrices: ");
+    printf("Enter the no. of matrices: ");
     scanf("%d", &n);
     for (i = 1; i <= n; i++)
         for (j = i + 1; j <= n; j++)
