@@ -222,12 +222,12 @@ void multiply(int **c, int **d, int size, int size2, int **new)
 		}
 		add(m1, m7, nsize, te1);
 		sub(m4, m5, nsize, te2);
-		add(te1, te2, nsize, te3); //c11
-		add(m3, m5, nsize, te4);   //c12
-		add(m2, m4, nsize, te5);   //c21
+		add(te1, te2, nsize, te3); 
+		add(m3, m5, nsize, te4);   
+		add(m2, m4, nsize, te5);   
 		add(m3, m6, nsize, te6);
 		sub(m1, m2, nsize, te7);
-		add(te6, te7, nsize, te8); //c22
+		add(te6, te7, nsize, te8); 
 		int a = 0;
 		int b = 0;
 		int c = 0;

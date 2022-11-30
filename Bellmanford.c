@@ -68,7 +68,7 @@ int main()
     scanf("%d", &E);
     printf("Enter your source vertex number:\n");
     scanf("%d", &S);
-    struct Graph *graph = createGraph(V, E); //calling the function to allocate space to these many vertices and edges
+    struct Graph *graph = createGraph(V, E);
     int i;
     for (i = 0; i < E; i++)
     {
