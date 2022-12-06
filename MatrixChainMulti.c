@@ -20,7 +20,7 @@ void matmultiply(void)
 {
     long int q;
     int k;
-    for (i = n; i > 0; i--)
+    for (i = n; i > 0; i--)````
     {
         for (j = i; j <= n; j++)
         {
